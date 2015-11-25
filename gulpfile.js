@@ -22,8 +22,8 @@ gulp.task('templates', function () {
         },
         templateData = {
             author: 'Alex Om', //Use your name
-            organisation: 'Systema Plexus', //Use your organistaion name
-            website: 'http://plexusit.ru'   //Use your website adress
+            organisation: 'Systema Plexus', //Use your organisation name
+            website: 'http://plexusit.ru'   //Use your website address
         };
 
     gulp.src(['./app/modules/*.hbs', './app/modules/*.html'])
