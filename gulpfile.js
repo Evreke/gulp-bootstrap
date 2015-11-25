@@ -18,12 +18,12 @@ gulp.task('clean:dev', function () {
 //Handlebars
 gulp.task('templates', function () {
     var options = {
-        batch: ['./app/modules/']
-    },
+            batch: ['./app/modules/']
+        },
         templateData = {
-            author: 'Alex Om',
-            organisation: 'Systema Plexus',
-            website: 'http://plexusit.ru'
+            author: 'Alex Om', //Use your name
+            organisation: 'Systema Plexus', //Use your organistaion name
+            website: 'http://plexusit.ru'   //Use your website adress
         };
 
     gulp.src(['./app/modules/*.hbs', './app/modules/*.html'])
