@@ -6,6 +6,7 @@ var rename = require('gulp-rename');
 var sass = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps');
 var livereload = require('gulp-livereload');
+var globing = require('gulp-sass-glob');
 
 
 //Clear 'dev' directory with all children
@@ -37,6 +38,7 @@ gulp.task('templates', function () {
 gulp.task('sass-dev', function () {
     gulp.src('./app/modules/*.scss')
         .pipe(sourcemaps.init())
+        .pipe(globing())
         .pipe(sass().on('error', sass.logError))
         .pipe(sourcemaps.write('.',{}))
         .pipe(gulp.dest('./dev/assets/css'))
