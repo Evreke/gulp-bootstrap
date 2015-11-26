@@ -33,18 +33,18 @@ gulp.task('templates', function () {
 });
 
 //SASS task for development version
-gulp.task('sass-dev', ['clean:dev'], function () {
+gulp.task('sass-dev', function () {
     gulp.src('./app/modules/**/*.scss')
         .pipe(sourcemapse.init())
         .pipe(sass().on('error', sass.logError))
         .pipe(sourcemapse.write('./'))
         .pipe(gulp.dest('./dev/assets/css'))
-        .pipe(livereload());
 });
 
 //Watch tasks
 gulp.task('watch:sass-dev', function () {
     gulp.watch('./app/modules/**/*.scss', ['sass-dev']);
+    gulp.watch(['./app/modules/**/*.hbs', './app/modules/**/*.html'],['templates']);
 });
 
-gulp.task('dev', ['sass-dev', 'watch:sass-dev']);
+gulp.task('dev', ['sass-dev', 'templates', 'watch:sass-dev']);
