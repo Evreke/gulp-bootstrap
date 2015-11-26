@@ -4,7 +4,7 @@ var del = require('del');
 var handlebars = require('gulp-compile-handlebars');
 var rename = require('gulp-rename');
 var sass = require('gulp-sass');
-var sourcemapse = require('gulp-sourcemaps');
+var sourcemaps = require('gulp-sourcemaps');
 var livereload = require('gulp-livereload');
 
 
@@ -35,10 +35,10 @@ gulp.task('templates', function () {
 
 //SASS task for development version
 gulp.task('sass-dev', function () {
-    gulp.src('./app/modules/**/*.scss')
-        .pipe(sourcemapse.init())
+    gulp.src('./app/modules/*.scss')
+        .pipe(sourcemaps.init())
         .pipe(sass().on('error', sass.logError))
-        .pipe(sourcemapse.write('./'))
+        .pipe(sourcemaps.write('.',{}))
         .pipe(gulp.dest('./dev/assets/css'))
         .pipe(livereload())
 });
