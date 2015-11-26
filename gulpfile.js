@@ -29,7 +29,8 @@ gulp.task('templates', function () {
     gulp.src(['./app/modules/*.hbs', './app/modules/*.html'])
         .pipe(handlebars(templateData, options))
         .pipe(rename('index.html'))
-        .pipe(gulp.dest('./dev/'));
+        .pipe(gulp.dest('./dev/'))
+        .pipe(livereload())
 });
 
 //SASS task for development version
@@ -39,10 +40,12 @@ gulp.task('sass-dev', function () {
         .pipe(sass().on('error', sass.logError))
         .pipe(sourcemapse.write('./'))
         .pipe(gulp.dest('./dev/assets/css'))
+        .pipe(livereload())
 });
 
 //Watch tasks
 gulp.task('watch:sass-dev', function () {
+    livereload.listen();
     gulp.watch('./app/modules/**/*.scss', ['sass-dev']);
     gulp.watch(['./app/modules/**/*.hbs', './app/modules/**/*.html'],['templates']);
 });
